@@ -1,6 +1,6 @@
 # Wow Bot
 
-This is a silly Discord bot written in TypeScript that uses the [Owen Wilson Wow API](https://owen-wilson-wow-api.onrender.com) to play random movie clips of Owen Wilson saying "wow" in response to messages containing the word "wow" on a Discord channel.
+This is a silly Discord bot written in TypeScript that uses the [Owen Wilson Wow API](https://owen-wilson-wow-api.onrender.com) to send random movie clips of Owen Wilson saying "wow" in response to messages containing the word "wow" on a Discord channel.
 
 ### Installation
 
@@ -11,6 +11,16 @@ git clone https://github.com/tommyothen/wowbot.git
 cd wowbot
 npm install
 ```
+
+### Building
+
+To build the bot, you will need to have TypeScript installed on your machine. Once you have that, you can build the project by running:
+
+```sh
+npm run build
+```
+
+This will transpile the TypeScript code into JavaScript and output the result in the dist folder.
 
 ### Usage
 
