@@ -2,41 +2,39 @@ import { Client, GatewayIntentBits, Events, ActivityType } from "discord.js";
 import axios from "axios";
 require("dotenv").config();
 
-var movies = [
-  "Bottle Rocket",
-  "The Cable Guy",
-  "Anaconda",
-  "Armageddon",
-  "The Haunting",
-  "Meet the Parents",
-  "Zoolander",
-  "Behind Enemy Lines",
-  "I Spy",
-  "Shanghai Noon",
-  "The Royal Tenenbaums",
-  "Zigzag",
-  "The Big Bounce",
-  "Starsky & Hutch",
-  "Shanghai Knights",
-  "Around the World in 80 Days",
-  "Wedding Crashers",
-  "You, Me and Dupree",
-  "Night at the Museum",
-  "The Darjeeling Limited",
-  "Drillbit Taylor",
-  "Marley & Me",
-  "Night at the Museum: Battle of the Smithsonian",
-  "Hall Pass",
-  "Midnight in Paris",
-  "The Intern",
-  "Masterminds",
-  "No Escape",
-  "Zoolander 2",
-  "Wonder",
-  "Isle of Dogs",
-  "The French Dispatch",
-  "Loki",
-];
+const wilsonMovies = {
+  "Bottle Rocket": "tt0115734",
+  "The Haunting": "tt0171363",
+  "Breakfast of Champions": "tt0120618",
+  "Shanghai Noon": "tt0184894",
+  "Meet the Parents": "tt0212338",
+  Zoolander: "tt0196229",
+  "I Spy": "tt0297181",
+  "Shanghai Knights": "tt0300471",
+  "The Big Bounce": "tt0315824",
+  "Starsky & Hutch": "tt0335438",
+  "Wedding Crashers": "tt0396269",
+  Cars: "tt0317219",
+  "You, Me and Dupree": "tt0463034",
+  "The Darjeeling Limited": "tt0838221",
+  "Drillbit Taylor": "tt0817538",
+  "Marley & Me": "tt0822832",
+  Marmaduke: "tt8746404",
+  "Little Fockers": "tt0970866",
+  "Hall Pass": "tt0480687",
+  "Midnight in Paris": "tt1605783",
+  "Cars 2": "tt1216475",
+  "The Big Year": "tt1053810",
+  "The Internship": "tt2234155",
+  "Free Birds": "tt1621039",
+  "Are You Here": "tt1545754",
+  "Night at the Museum: Secret of the Tomb": "tt2692250",
+  "No Escape": "tt1781922",
+  "Cars 3": "tt3606752",
+  "Father Figures": "tt1966359",
+} as const;
+
+type Movie = keyof typeof wilsonMovies;
 
 const client = new Client({
   intents: [
@@ -75,9 +73,15 @@ client.on(Events.MessageCreate, async (message) => {
 });
 
 const changeActivity = () => {
-  client.user?.setActivity(movies[Math.floor(Math.random() * movies.length)], {
+  const movie = Object.keys(wilsonMovies)[
+    Math.floor(Math.random() * Object.keys(wilsonMovies).length)
+  ] as Movie;
+
+  const imdb = wilsonMovies[movie];
+
+  client.user?.setActivity(movie, {
     type: ActivityType.Streaming,
-    url: "https://www.youtube.com/watch?v=mOkvkOAE7bA",
+    url: `https://www.imdb.com/title/${imdb}`,
   });
 };
 
