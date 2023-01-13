@@ -2,6 +2,8 @@
 
 This is a silly Discord bot written in TypeScript that uses the [Owen Wilson Wow API](https://owen-wilson-wow-api.onrender.com) to send random movie clips of Owen Wilson saying "wow" in response to messages containing the word "wow" on a Discord channel.
 
+Invite the bot to your server by clicking [here](https://discord.com/api/oauth2/authorize?client_id=968537395769270353&permissions=3072&scope=bot).
+
 ### Installation
 
 To run the bot, you will need to have Node.js and npm installed on your machine. Once you have those, you can clone the repository and install the dependencies by running:
