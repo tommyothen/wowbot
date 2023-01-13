@@ -77,11 +77,8 @@ const changeActivity = () => {
     Math.floor(Math.random() * Object.keys(wilsonMovies).length)
   ] as Movie;
 
-  const imdb = wilsonMovies[movie];
-
   client.user?.setActivity(movie, {
-    type: ActivityType.Streaming,
-    url: `https://www.imdb.com/title/${imdb}`,
+    type: ActivityType.Watching,
   });
 };
 
