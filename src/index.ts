@@ -83,6 +83,7 @@ const changeActivity = () => {
 client.on(Events.ClientReady, () => {
   console.log("Ready!");
 
+  changeActivity();
   setTimeout(() => {
     changeActivity();
   }, 60 * 60 * 1000);
