@@ -36,6 +36,9 @@ const wilsonMovies = {
 
 type Movie = keyof typeof wilsonMovies;
 
+type DiscordID = string;
+const cooldowns = new Map<DiscordID, Date>();
+
 const client = new Client({
   intents: [
     GatewayIntentBits.GuildMessages,
@@ -49,6 +52,18 @@ client.on(Events.MessageCreate, async (message) => {
   if (message.author.bot) return;
 
   if (message.content.toLowerCase().includes("wow")) {
+    if (cooldowns.has(message.author.id)) {
+      const cooldown = cooldowns.get(message.author.id);
+
+      if (cooldown && cooldown.getTime() > Date.now()) {
+        return;
+      } else {
+        cooldowns.delete(message.author.id);
+      }
+    }
+
+    cooldowns.set(message.author.id, new Date(Date.now() + 10 * 60 * 1000));
+
     try {
       const res = await axios.get("https://owen-wilson-wow-api.onrender.com/wows/random");
 
